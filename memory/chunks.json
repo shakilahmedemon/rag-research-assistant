@@ -1,0 +1,513 @@
+[
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_0",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 1",
+    "type": "text",
+    "text": "IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA T ION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022 10763\nA Place-Timed Petri Net-Based Method to Avoid\nDeadlock and Con\ufb02ict in Railway Networks\nJianchao Luo , Mengchu Zhou , Fellow, IEEE, and Jun-Qiang Wang\nAbstract\u2014 The real-time traf\ufb01c control of railway networks\nimposes safety constraints and authorizes movements of trains.\nThis work deals with it by focusing on con\ufb02ict and deadlock\navoidance problems. A place-timed Petri net model is developed\nfor a railway network. Based on it, a con\ufb02ict avoidance method is\npresented to ensure that safety principles in railway networks are\nrespected. Also, a polynomial deadlock avoidance policy based on\nthe Banker\u2019s algorithm is proposed. It authorizes the movement\nof trains between block sections and stations. The proposed\ncon\ufb02ict avoidance method and deadlock avoidance policy together\nensure a railway network to be con\ufb02ict-free and deadlock-free.\nExperimental results show that they are effective and ef\ufb01cient.\n"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_1",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 2",
+    "type": "text",
+    "text": "proposed\ncon\ufb02ict avoidance method and deadlock avoidance policy together\nensure a railway network to be con\ufb02ict-free and deadlock-free.\nExperimental results show that they are effective and ef\ufb01cient.\nIndex Terms\u2014 Railway network, Petri net (PN), con\ufb02ict avoid-\nance, discrete event system, deadlock avoidance, safety.\nI. I NTRODUCTION\nA\nRAILW A Y network as one of the major transportation\nservice infrastructures for passengers is critically impor-\ntant in many countries. It is viewed as a safer mode than\nother modes of transport, making it highly attractive [17], [22].\nIn such network, deadlocks and con\ufb02icts may occur when\nmany trains are running simultaneously and competing for\n\ufb01nite block sections or stations. The failure to resolve them\nmay cause railway accidents [ 34]. Thus, it is signi\ufb01cant to\nestablish effective con\ufb02ict and deadlock avoidance methods to\nensure a con\ufb02ict/deadlock-free railway network.\nManuscript received 3 April 2020; revised 14 September 2020,\n20 March 2021, and 2"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_2",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 3",
+    "type": "text",
+    "text": "\ufb01cant to\nestablish effective con\ufb02ict and deadlock avoidance methods to\nensure a con\ufb02ict/deadlock-free railway network.\nManuscript received 3 April 2020; revised 14 September 2020,\n20 March 2021, and 21 June 2021; accepted 29 June 2021. Date of publication\n11 August 2021; date of current version 9 August 2022. This work was\nsupported in part by the National Key Research and Development Program of\nChina under Grant 2019YFB1703800, in part by the Guangdong Basic\nand Applied Basic Research Foundation under Grant 2019A1515111076,\nin part by the National Natural Science Foundation of China under\nGrant 62003265, in part by the China Post doctoral Science Foundation under\nGrant 2019M663818, and in part by the Natural Science Basic Research\nPlan in Shaanxi Province of China under Grant 2019JQ-435. The Associate\nEditor for this article was A. Nunez. (Corresponding authors: Jianchao Luo;\nMengchu Zhou.)\nJianchao Luo is with the Research and Development Institute of\nNorthwestern Polytechnical Unive"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_3",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 4",
+    "type": "text",
+    "text": "The Associate\nEditor for this article was A. Nunez. (Corresponding authors: Jianchao Luo;\nMengchu Zhou.)\nJianchao Luo is with the Research and Development Institute of\nNorthwestern Polytechnical University in Shenzhen, Shenzhen 518057, China,\nand also with the School of Software, Northwestern Polytechnical University,\nXi\u2019an 710072, China (e-mail: l uojianchao@nwpu.edu.cn).\nMengchu Zhou is with the Department of Electrical and Computer Engi-\nneering, New Jersey Institute of Technology, Newark, NJ 07102 USA, and\nalso with the Institute of Systems Engineering and Collaborative Laboratory\nfor Intelligent Science and Systems, Macau University of Science and Tech-\nnology, Macau 999078, China (e-mail: zhou@njit.edu).\nJun-Qiang Wang is with the Performance Analysis Center of Production\nand Operations Systems (PacPos), Northwestern Polytechnical University,\nXi\u2019an 710072, China, and also with the Dep artment of Industrial Engineering,\nSchool of Mechanical Engineering, Nort hwestern Polytechnical"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_4",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 5",
+    "type": "text",
+    "text": "ons Systems (PacPos), Northwestern Polytechnical University,\nXi\u2019an 710072, China, and also with the Dep artment of Industrial Engineering,\nSchool of Mechanical Engineering, Nort hwestern Polytechnical University,\nXi\u2019an 710072, China (e-mail: wangjq@nwpu.edu.cn).\nDigital Object Identi\ufb01er 10.1109/TITS.2021.3095661\nRailway networks require both performance control and log-\nical control. The former focuses on sch eduling or rescheduling\nproblems to reduce delays [16]. The latter focuses on imposing\nproper con\ufb02ict and deadlock avoidance constraints [14].\nDuring the past decades, the performance control of\nrailway networks was extensively studied. V arious traf\ufb01c\nscheduling and rescheduling approaches have been pro-\nposed [1]\u2013[3], [8], [10], [21], [24], [26]\u2013[28], [32], [36]\u2013[40],\n[43], [47]\u2013[49]. Good surveys on scheduling and rescheduling\nmethods of railway networks can be found in [4], [7], [42].\nRepresentatively, Wang et al . [49] propose a heuristic search\nrescheduling algorithm for con"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_5",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 6",
+    "type": "text",
+    "text": "]. Good surveys on scheduling and rescheduling\nmethods of railway networks can be found in [4], [7], [42].\nRepresentatively, Wang et al . [49] propose a heuristic search\nrescheduling algorithm for con\ufb02ict avoidance of a railway\nnetwork based on Petri nets (PNs). The proposed algorithm\nresolves con\ufb02icts by searching a con\ufb02ict-free schedule in the\nreachability graph of the PN of a railway network. As the num-\nber of reachable markings of a PN grows exponentially with\nthe net size, there may be a huge number of unsafe markings\nfor a large scale deadlock-prone net. Once the rescheduling\nalgorithm [49] runs into these unsafe markings, it can hardly\njump out of them, causing its failure to \ufb01nd a schedule in\na reasonable time. Since deadlock avoidance or prevention\npolicies can avoid unsafe markings, the rescheduling algo-\nrithm [49] can be extended for large scale deadlock-prone nets\nby integrating with such policies.\nOnly a few studies focus on the logical control of railway\nnetworks [11]\u2013["
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_6",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 7",
+    "type": "text",
+    "text": "ngs, the rescheduling algo-\nrithm [49] can be extended for large scale deadlock-prone nets\nby integrating with such policies.\nOnly a few studies focus on the logical control of railway\nnetworks [11]\u2013[14]. Fanti et al . [11], [12] propose a deadlock\nprevention policy based on colored PN for railway networks.\nTheir method needs to enumerat e all the cycles in a PN. Since\nthe number of cycles in a PN grows exponentially with the net\nsize, it can hardly handle large scale railway networks. Giua\nand Seatzu [13], [14] use PNs to model railway networks and\npropose a deadlock prevention policy without enumerating all\nsiphons. Their method has to solve an integer program, which\nis NP-hard. Hence, it cannot handle large scale networks.\nWe pay attention to logical control of railway networks.\nDiffering from [11]\u2013[14], we conduct deadlock avoidance. Our\nmain contributions are as follows:\n(1) A place-timed PN model is developed. It can describe\nall stages of a train on a block section or station.\n("
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_7",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 8",
+    "type": "text",
+    "text": "ng from [11]\u2013[14], we conduct deadlock avoidance. Our\nmain contributions are as follows:\n(1) A place-timed PN model is developed. It can describe\nall stages of a train on a block section or station.\n(2) A con\ufb02ict avoidance method whose complexity is O(1)\nis proposed based on the developed PN. It can ensure\nthat all reachable markings sa tisfy two safety principles\nin [15], [49].\n(3) A polynomial deadlock avoidance policy (DAP) is devel-\noped for railway networks for the \ufb01rst time. It ensures\nall reachable markings of the PN deadlock-free.\n1558-0016 \u00a9 2021 I EEE. Personal u se is perm itted, but republication/redistri bution requires IEEE permission.\nSee https://www.ieee.org/publications/rights/index.html for more information.\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10764 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022\n(4) The proposed con\ufb02ict av"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_8",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 9",
+    "type": "text",
+    "text": "ded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10764 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022\n(4) The proposed con\ufb02ict avoidance method and DAP can\nbe integrated with existing scheduling or rescheduling\nmethods directly and hence make them applicable for\nmore general railway networks.\nSection II reviews basic de\ufb01nitions of PNs and establishes\nthe place-timed PN for a railway n etwork. A con\ufb02ict avoidance\nmethod based on PN is developed in Section III. Section IV\ndevelops a DAP . Its effectiveness is demonstrated in Section V .\nWe summarize this work in Section VI.\nII. PN M\nODELS OF RAILW A YNETWORKS\nThis section reviews the preliminaries of PNs \ufb01rst. Please\nrefer to [5], [6], [33], [50], [54], [55], [57], [58] for more\ndetails. Then, the studied railway networks are described and\ntheir PN models are developed.\nA. Basics of PNs\nLet N ={ 0, 1, 2,... }, N\n+ ={ 1, 2, 3,... },a n d Nk =\n{1, 2,..., k}w h e r ek \u2208 "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_9",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 10",
+    "type": "text",
+    "text": "or more\ndetails. Then, the studied railway networks are described and\ntheir PN models are developed.\nA. Basics of PNs\nLet N ={ 0, 1, 2,... }, N\n+ ={ 1, 2, 3,... },a n d Nk =\n{1, 2,..., k}w h e r ek \u2208 N+.AP Ni s N = (P, T , F). P \u0003=\u2205\nand T \u0003=\u2205 are sets of places and transitions, respectively, with\nP \u2229 T =\u2205 . F \u2286 (T \u00d7 P)\u222a (P \u00d7 T) is a set of directed arcs.\nThe weights of arcs in the PNs studied in this work are all 1,\nand hence, omitted.\nGiven a vertex v \u2208 P \u222a T , its preset and postset are denoted\nas \u2022 v ={ u \u2208 P \u222a T| (u, v) \u2208 F}a n d v\u2022 ={ u \u2208 P \u222a T| (v,\nu) \u2208 F}, respectively. For briefness, \u2022 v ={ u} is denoted as\n\u2022 v = u.A path in N is a sequence of vertices \u03c3 = v1v2\u2026vk ,\nwhere vi \u2208 P \u222a T and (vi , vi+1) \u2208 F \u2200i \u2208 Nk\u2212 1.\nA marking of N is a mapping M: P \u2192 N that assigns each\np \u2208 P a non-negative integer. Given a set of places U \u2286 P,l e t\nM(U) = \u2211\np\u2208U M( p). t \u2208 T is enabled to \ufb01re at M, denoted\nby M[t >,i f M( p) \u2265 1, \u2200p \u2208 \u2022 t. M[t > M1,w h e r eM1( p) =\nM( p) \u2212 1, \u2200p \u2208 \u2022 t\\t\u2022 , M1( p"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_10",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 11",
+    "type": "text",
+    "text": "egative integer. Given a set of places U \u2286 P,l e t\nM(U) = \u2211\np\u2208U M( p). t \u2208 T is enabled to \ufb01re at M, denoted\nby M[t >,i f M( p) \u2265 1, \u2200p \u2208 \u2022 t. M[t > M1,w h e r eM1( p) =\nM( p) \u2212 1, \u2200p \u2208 \u2022 t\\t\u2022 , M1( p) = M( p) + 1,\u2200p \u2208 t\u2022 \\\u2022 t,a n d\notherwise, M1( p) = M( p).Am a r k i n g Mk+1 is reachable\nfrom M1 if \u2203\u03c3 = t1t2 ... tk \f M j [t j > M j+1, \u2200j \u2208 Nk .\nLet R(N, M1) denote the collection of all markings reachable\nfrom M1.\nLet ( N1, M10) = (P1, T1, F1, M10) and ( N2, M20) = (P2,\nT2, F2, M20) be two marked PNs. If \u2200p \u2208 P1 \u2229 P2, M10( p) =\nM20( p),t h e n( N1, M10) and ( N2 , M20) are compatible. They\ncan be composed and their composition is a marked net ( N1 \u2297\nN2, M0) = (N1, M10)\u2297(N2 , M20),w h e r eN1\u2297 N2 = (P1\u222a P2,\nT1 \u222a T2, F1 \u222a F2) and M0( p) = Mi0( p), \u2200i \u2208{ 1, 2} and\n\u2200p \u2208 Pi .\nB. Basics of Railway Networks\nA railway network can be treated as the composition of\nmultiple elementary modules, i.e ., tracks, points, and stations,\nwhere tracks are the roadways of a railway network, stations\nare "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_11",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 12",
+    "type": "text",
+    "text": "lway Networks\nA railway network can be treated as the composition of\nmultiple elementary modules, i.e ., tracks, points, and stations,\nwhere tracks are the roadways of a railway network, stations\nare sets of interlocked tracks b etween entries and exits, and\npoints are the movable parts of a turnout that are operated\nto build different routes. Their detailed de\ufb01nitions can be\nfound in [35]. The studied railway network uses a three-aspect\nsignaling to ensure a safe distance between successive trains on\nthe same track. In the network, a track segment between two\nsignals is named as a block section. Three signals are indicated\nby green, yellow, and red colors, respectively. A green signal\nFig. 1. The layout of block sections.\nTABLE I\nFUNCTIONS OF SIGNALS AND SENSORS\nindicates that the following two block sections are idle such\nthat a train may pass at full speed. A yellow signal indicates\nthat the subsequent block section is idle, but the one after it is\nused, such that a train should slo"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_12",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 13",
+    "type": "text",
+    "text": "ng two block sections are idle such\nthat a train may pass at full speed. A yellow signal indicates\nthat the subsequent block section is idle, but the one after it is\nused, such that a train should slow down to a restricted speed\nand be ready for stopping before a red signal. At last, a red\none indicates that another train is occupying the subsequent\nblock section. Hence, a train must stop and wait for the signal\nto change to green or yellow.\nThere are also some sensors around each signal to detect if\nthe corresponding block section is occupied or idle. The layout\nof block sections is shown in Fig. 1, while the functions of\nsignals and sensors are listed in Table I. Sensors can detect the\npositions of trains but cannot control the behavior of trains.\nOnly signals in block sections can control the behavior of\ntrains. A station may contain k inner block sections, where\nk \u2208 N\n+. Since a block section can hold at most one train at\na time, a station can hold at most k trains. The layout of a"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_13",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 14",
+    "type": "text",
+    "text": "ol the behavior of\ntrains. A station may contain k inner block sections, where\nk \u2208 N\n+. Since a block section can hold at most one train at\na time, a station can hold at most k trains. The layout of a\nstation is shown in Fig. 2. The functions of signals and sensors\nare similar to those in Table I, and hence omitted.\nC. Place-Timed PN Models of Railway Networks\nThe railway network studied in this paper consists of m\nblock sections B ={ bi , i \u2208 Nm }, n stations S ={ si , i \u2208 Nn },\nand several points. Since points are used to set up different\nroutes, they can be hidden in the routes, and hence omitted.\nB \u222a S is a set of all resources in the system. For simplicity,\na block section b\ni \u2208 B and a station s j \u2208 S are modeled by bi\nand s j , respectively. A block section can hold only one train\neach time. A station can hold multiple trains at the same time.\nLet r \u2208 B \u222a S and C(r) denote the capacity of r . Note that\n\u2200r \u2208 B, C(r) = 1. There are \u0003 types of trains running in\na railway network. T"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_14",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 15",
+    "type": "text",
+    "text": "ach time. A station can hold multiple trains at the same time.\nLet r \u2208 B \u222a S and C(r) denote the capacity of r . Note that\n\u2200r \u2208 B, C(r) = 1. There are \u0003 types of trains running in\na railway network. The set of \u0003 train types is represented as\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\nLUO et al. : PLACE-TIMED PN-BASED METHOD TO A VOID DEADLOCK AND CONFLICT 10765\nFig. 2. The layout of a station.\nQ = N\u0003 . \u03c8q , q \u2208 Q, is the number of type- q trains to be\narranged in the network.\nA route of a train is a sequence of block sections and\nstations. A train may have multiple routes. Its route can be\nchosen by the control center and by means of interlocking.\nLet W ={ w\ni| 1 \u2264 i \u2264| W|} represent the set of all routes\nin the network, and Wq \u2286 W represent the set of routes of\ntype-q trains, where q \u2208 Q. Route wi can be denoted as\nwi = ri1ri2 ... riL i ,w h e r erij \u2208 B \u222a S is the j th resource\nin wi"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_15",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 16",
+    "type": "text",
+    "text": "et of all routes\nin the network, and Wq \u2286 W represent the set of routes of\ntype-q trains, where q \u2208 Q. Route wi can be denoted as\nwi = ri1ri2 ... riL i ,w h e r erij \u2208 B \u222a S is the j th resource\nin wi and Li is its length. Let Dq1 and Dq2 denote two\n\u201cvirtual\u201d docking stations which can hold all type- q trains\nin the network, i.e., C(Dq1) = C(Dq2) =\u221e . For simplicity,\nDq1 and Dq2 are modeled by two docking places denoted as\nDq1 and Dq2, respectively. Then, the i th route of type- q trains\nfrom Dq1 to Dq2 is wi = Dq1ri1ri2 ... riL i Dq2.\nA train has three stages on a block section (or station),\ni.e., entering, running (or dwe lling), and clearing. Take the\nblock section 2 in Fig. 1 for example. A train\u2019s entering stage\ncorresponds to the distance from signal 1 (or sensor 1) to\nsensor 2. Its running stage corresponds to the distance from\nsensor 2 to signal 2 (or sensor 3). Its clearing stage corresponds\nto the distance from signal 2 to sensor 4.\nAt r a i no nr\nij ( j \u2208 NLi ) in wi is mode"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_16",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 17",
+    "type": "text",
+    "text": "running stage corresponds to the distance from\nsensor 2 to signal 2 (or sensor 3). Its clearing stage corresponds\nto the distance from signal 2 to sensor 4.\nAt r a i no nr\nij ( j \u2208 NLi ) in wi is modeled by \u03c0ij = ti(2 j\u2212 1)\npi(2 j\u2212 1)ti(2 j) pi(2 j)ti(2 j+1) pi(2 j+1)ti(2 j+2),w h e r e pi(2 j\u2212 1),\npi(2 j),a n d pi(2 j+1) denote the places of the train\u2019s three\nstages, respectively; ti(2 j\u2212 1), ti(2 j),a n d ti(2 j+1) denote the\nbeginning of its three stages, respectively; and ti(2 j+2) denotes\nits completion of clearing rij . Since there is a signal in the\nbeginning of the entering stage, ti(2 j\u2212 1) is controllable. Since\nno signal exists in the beginning of the running stage, ti(2 j) is\nuncontrollable. We call \u03c0ij as a stage path since each place\nin it corresponds to a stage of a train, and pi(2 j) as a second\nstage place since it denotes the place of a train\u2019s second\nstage on a block section (or station). Add an arc from rij\nto ti(2 j\u2212 1) to denote the allocation of rij and an arc fr"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_17",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 18",
+    "type": "text",
+    "text": "nd pi(2 j) as a second\nstage place since it denotes the place of a train\u2019s second\nstage on a block section (or station). Add an arc from rij\nto ti(2 j\u2212 1) to denote the allocation of rij and an arc from\nti(2 j+2) to rij to denote the release of rij . After modeling all\nrij ( j \u2208 NLi ) in wi , we obtain the PN model of wi , denoted\nas PN i .\nLet wi = Dq1ri1ri2 ... riL i Dq2 \u2208 Wq and w j = Dq1r j 1r j 2\n... r jL j Dq2 \u2208 Wq be two routes of type- q trains. If \u2203k \u2208\n{NLi \u2229 NL j }\f rik = r jk , then paths ti(2k\u2212 1) pi(2k\u2212 1)ti(2k)\npi(2k)ti(2k+1) pi(2k+1) and t j(2k\u2212 1) p j(2k\u2212 1)t j(2k) p j(2k)t j(2k+1)\np j(2k+1) are merged as one. The PN of the network is :\n(N, M0) = (Ps \u222a PR \u222a PD, T, F, M0) =\u2297 wi \u2208W PNi\nwhere Ps is the set of places corresponding to train stages; PR\nis the set of places of block sections and stations; PD ={ Dq1,\nDq2|q \u2208 Q}; T and F are sets of transitions and arcs,\nrespectively. M0 is its initial marking which is de\ufb01ned as\nM0( p) = 0, \u2200p \u2208 Ps ; M0(r) = C(r), \u2200r \u2208 PR ;a n d"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_18",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 19",
+    "type": "text",
+    "text": "ck sections and stations; PD ={ Dq1,\nDq2|q \u2208 Q}; T and F are sets of transitions and arcs,\nrespectively. M0 is its initial marking which is de\ufb01ned as\nM0( p) = 0, \u2200p \u2208 Ps ; M0(r) = C(r), \u2200r \u2208 PR ;a n d\nM0(Dq1) = \u03c8q , M0(Dq2) = 0,\u2200q \u2208 Q.T h e\ufb01 n a lm a r k i n gi s\ndenoted as M f ,w h e r eM f ( p) = 0, \u2200p \u2208 Ps ; M f (r) = C(r),\n\u2200r \u2208 PR ;a n d M f (Dq1) = 0, M f (Dq2) = \u03c8q , \u2200q \u2208 Q.\nRemark 1: The set of uncontrollable transitions in an RNPN\ncan be denoted as { ti(2 j)|i \u2208 N|W|, j \u2208 NLi }. Each uncontrol-\nlable transition denotes either the start of a dwelling stage or\ncompletion of a route. The resource required by a dwelling\nstage has been requested by its front stage, i.e., an entering\nstage. No more resources are n eeded for the completion of a\nroute. Hence,\n(r)ti(2 j) =\u2205\u2200 i \u2208 N|W|, \u2200j \u2208 NLi .\nGiven p \u2208 Ps ,l e t d( p) represent the processing time of\nthe train stage modeled by p. If p is a second stage place,\nthen d( p) stands for the running time (or dwelling time) of\nthe train on t"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_19",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 20",
+    "type": "text",
+    "text": "NLi .\nGiven p \u2208 Ps ,l e t d( p) represent the processing time of\nthe train stage modeled by p. If p is a second stage place,\nthen d( p) stands for the running time (or dwelling time) of\nthe train on the block section (or station). Otherwise, d( p)\nstands for the entering time (or clearing time) of the train on\nthe block section (or station). For p \u2208 PR \u222a PD , d( p) = 0.\nWe abbreviate this Railway Network PN as RNPN. Note that\nRNPN is place-timed in this pape r. Note that no time interval\nis associated to any transition in an RNPN, which is different\nfrom transaction-timed PNs in [30], [31], and [56].\nThis work only considers initial markings that denote no\ntoken in P\ns and allow the running of each train separately.\nWe call them acceptable initial markings, which are formally\nde\ufb01ned next.\nDe\ufb01nition 1: Given N = (Ps \u222a PR \u222a PD , T , F), M0 is\nacceptable for N if: 1) M0( p) = 0,\u2200p \u2208 Ps ;2 ) M0(r)> 0,\n\u2200r \u2208 PR ; and 3) M0(Dq1) = \u03c8q and M0(Dq2) = 0,\u2200q \u2208 Q.\nExample 1 : Consider a railway netw"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_20",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 21",
+    "type": "text",
+    "text": "De\ufb01nition 1: Given N = (Ps \u222a PR \u222a PD , T , F), M0 is\nacceptable for N if: 1) M0( p) = 0,\u2200p \u2208 Ps ;2 ) M0(r)> 0,\n\u2200r \u2208 PR ; and 3) M0(Dq1) = \u03c8q and M0(Dq2) = 0,\u2200q \u2208 Q.\nExample 1 : Consider a railway network with three block\nsections, i.e., B ={ b1, b2, b3}. There are two types of\ntrains running in this network, i.e., Q = N2. Type-1 trains\nhave only one route, i.e., w1 = D11b1b2b3 D12. Type-2\ntrains also have only one route, i.e., w2 = D21b3b2b1 D22.\nThen, W ={ w1, w2}. Routes w1 and w2 are modeled\nby D11t11 p11t12 p12t13 p13t14 p14t15 p15t16 p16t17 p17t18 D12,a n d\nD21t21 p21t22 p22t23 p23t24 p24t25 p25t26 p26t27 p27t28 D22. Sup-\npose that M0(D11) = M0(D21) = 5a n d M0(D12) =\nM0(D22) = 0. The layout of the network is shown in Fig. 3(a)\nand its PN model is shown in Fig. 3(b), where relationships\namong transitions, signals and sensors are listed in Table II.\nNote that all transitions that correspond to sensors only are\nuncontrollable. In Fig. 3(b), uncontrollable transitions, i.e.,\nt\n12, t1"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_21",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 22",
+    "type": "text",
+    "text": "ps\namong transitions, signals and sensors are listed in Table II.\nNote that all transitions that correspond to sensors only are\nuncontrollable. In Fig. 3(b), uncontrollable transitions, i.e.,\nt\n12, t14, t16-t18, t22, t24,a n d t26-t28 are marked in black to\ndistinguish from cont rollable transitions that correspond to\nsignals. The input resource pl ace set of each uncontrollable\ntransition is \u2205. Since no time interval is associated to any\ntransition, all transitions in Fig. 3(b) are immediate.\nFrom the time when a train begins to leave a block section b\nto the time when it totally releases b, the train may occupy\ntwo block sections at the sam e time. Such occupation can\nbe easily described by RNPN. For example, a train in p13\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10766 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022\nFig. 3. (a) The layout of a"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_22",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 23",
+    "type": "text",
+    "text": "ded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10766 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022\nFig. 3. (a) The layout of a railway network and (b) its PN model.\nTABLE II\nRELA TIONSHIPS AMONG TRANSITIONS ,S IGNALS AND SENSORS\nin Fig. 3(b) occupies both b1 and b2. However, such occupation\ncannot be described by the PN models formulated in [11]\u2013[14],\n[49]. Thus, our PN can describe the railway network more\naccurately than those in [11]\u2013[14], [49] do.\nGiven t \u2208 T ,\n(s)t (t(s)) represents its input (output) stage\nplace set, and (r)t (t(r)) represents its input (output) resource\nplace set. Given M \u2208 R(N, M0),i f \u2200p \u2208 (s)t, M( p)> 0,\nthen t is stage-enabled at M;i f (r)t =\u2205 or M((r)t)> 0,\nthen t is resource-enabled at M. Note that stage-enabledness\nis equivalent to process-enabledness in [36], [52]. In an RNPN,\na stage and resource-enabled transaction t can \ufb01re only when\n\u2200p \u2208\n(s)t, at least one token in p has \ufb01nishe"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_23",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 24",
+    "type": "text",
+    "text": ". Note that stage-enabledness\nis equivalent to process-enabledness in [36], [52]. In an RNPN,\na stage and resource-enabled transaction t can \ufb01re only when\n\u2200p \u2208\n(s)t, at least one token in p has \ufb01nished its current\nprocess.\nIII. S AFETY PRINCIPLES AND THEIR IMPLEMENTA TION\nWe \ufb01rst review the safety principles in a railway net-\nwork [15], [49]. Then, we propose a con\ufb02ict avoidance method\nthat can make RNPN respect these principles.\nA. Safety Principles\nTwo safety principles in a railway network are proposed\nin [15] and [49]. The \ufb01rst one is that each resource (block\nsection or station) cannot hold a number of trains which is\ngreater than its capacity. It means that the number of trains on\na resource (block section or station) cannot be greater than the\nresource\u2019s capacity. In other wo rds, the remaining capacity of\na resource should be greater than or equal to 0. More precisely,\n\u2200M \u2208 R(N, M\n0), \u2200r \u2208 B \u222a S, M(r) \u2265 0.\nThe second one is that there is a minimum headway\ntime (MHT) between two"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_24",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 25",
+    "type": "text",
+    "text": "he remaining capacity of\na resource should be greater than or equal to 0. More precisely,\n\u2200M \u2208 R(N, M\n0), \u2200r \u2208 B \u222a S, M(r) \u2265 0.\nThe second one is that there is a minimum headway\ntime (MHT) between two successive trains such that the\nbehind one is not obstructed when running at its scheduled\nspeed. Fig. 4 illustrates how blocking times of two consecutive\ntrains on a block section in a railway network are calculated.\nFrom Fig. 4, we can know that MHT between two consecutive\nFig. 4. Blocking times for two consec utive trains in a railway network.\ntrains, i.e., v1 and v2 (v1 precedes v2), on a block section is\nequal to the sum of the clearing time of train v1 to clear the\nblock section, switching time (release time), the local buffer\ntime at the block signal, the sight and reaction time of v2,a n d\nthe approaching time of v2 between the approach signal and\nthe block signal. v2 cannot start earlier than this MHT after\nv1 leaves. Their computation as shown in Fig. 4 can be found\nin detail in"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_25",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 26",
+    "type": "text",
+    "text": "a n d\nthe approaching time of v2 between the approach signal and\nthe block signal. v2 cannot start earlier than this MHT after\nv1 leaves. Their computation as shown in Fig. 4 can be found\nin detail in [15].\nIf these safety principles are not respected, con\ufb02icts are\nnearly unavoidable [49]. In RNPN, a marking that does not\nrespect them is called as a con\ufb02ict marking. For sake of safety,\nwe should prevent RNPN from reaching con\ufb02ict markings.\nB. Con\ufb02ict Avoidance Based on RNPN\nCon\ufb02ict avoidance can be directly realized based on search-\ning the reachable markings of the PN model of a railway\nnetwork [49]. The number of reachable markings of a PN,\nunfortunately, grows with the net size exponentially. Thus such\na method cannot be used to cope with a large scale railway\nnetwork. This section proposes a con\ufb02ict avoidance method\nbased on the basic principles of timed PN.\nConsider the \ufb01rst safety principle, i.e., \u2200M \u2208 R(N, M\n0),\n\u2200r \u2208 B \u222a S, M(r) \u2265 0. Since M(r) \u2265 0 is trivial at a\nPN, the \ufb01rst s"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_26",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 27",
+    "type": "text",
+    "text": "oses a con\ufb02ict avoidance method\nbased on the basic principles of timed PN.\nConsider the \ufb01rst safety principle, i.e., \u2200M \u2208 R(N, M\n0),\n\u2200r \u2208 B \u222a S, M(r) \u2265 0. Since M(r) \u2265 0 is trivial at a\nPN, the \ufb01rst safety principle cannot be disrespected in RNPN.\nWe focus on avoiding the con\ufb02ict caused by the violation of\nthe second safety principle.\nMHT is related with the types of consecutive trains and\nthe block section where they run [15]. To guarantee MHT\nbetween two successive trains, we can restrict the earliest\navailable time of a block section. To this end, a token in P\nR\nin RNPN should record the type of the train that runs on\nthe resource represented by it last time ( ty \u2208 Q), its earliest\navailable time ( te \u2208 N), and the time when the train that runs\non the resource represented by it last time begins to leave\n(t\nl \u2208 N). Similarly, a token in Ps \u222a PD should record the type\nof the train represented by it ( ty \u2208 Q), its earliest available\ntime ( te \u2208 N), and the time when the train represent"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_27",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 28",
+    "type": "text",
+    "text": "e begins to leave\n(t\nl \u2208 N). Similarly, a token in Ps \u222a PD should record the type\nof the train represented by it ( ty \u2208 Q), its earliest available\ntime ( te \u2208 N), and the time when the train represented by it\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\nLUO et al. : PLACE-TIMED PN-BASED METHOD TO A VOID DEADLOCK AND CONFLICT 10767\nbegins to leave the occupied resource ( tl \u2208 N). Thus, a token\nin Ps \u222a PR \u222a PD can be denoted as ( ty , te, tl).\nLet p \u2208 PR be a place of a block section, and ty2 and ty1\nbe two types of trains that run on it sequentially. Suppose that\ntype ty2 train precedes type ty1 train. Let h( p, ty1, ty2) denote\nMHT between them on the block section modeled by p.M H T\nis used to constrain the earliest \ufb01ring time of a transition,\nformally denoted as follows.\nGiven M \u2208 R(N, M\n0) and t \u2208 T \f M[t >,l e t p = (s)t\nand p1 = t(s) be the input and output stage places of t,\nrespec"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_28",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 29",
+    "type": "text",
+    "text": " to constrain the earliest \ufb01ring time of a transition,\nformally denoted as follows.\nGiven M \u2208 R(N, M\n0) and t \u2208 T \f M[t >,l e t p = (s)t\nand p1 = t(s) be the input and output stage places of t,\nrespectively, and ( ty , te, tl) be the token in p with te being\nthe smallest among all tokens\u2019 in p. Suppose that the current\ntime is \u03c4.I f (r)t \u0003=\u2205 , suppose that ( ty1, te1, tl1) is a token in\nr1 = (r)t with tl1 being the smallest among all tokens\u2019 in r1.\nLet f (t) be the earliest \ufb01ring time of t,t h e n\nf (t) =\n{\nmax{te,\u03c4}, if (r)t =\u2205\nmax{max{tl1 + h( p, ty, ty1), te},\u03c4}, if (r)t \u0003=\u2205 (1)\nwhere the second term means that type ty train cannot start\nearlier than MHT plus the time when the preceding train\nbegins to leave r1.\nAfter \ufb01ring t at M, some tokens are added to t(s) and t(r).\nThese tokens are formally computed as follows. Let M[t >\nM1,t h e n M1( p1) = M( p1) + 1, where p1 = t(s).I f p =\n(s)t is a second stage place, then the added token in p1 can\nbe denoted as ( ty , f (t) + d( p1), f ("
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_29",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 30",
+    "type": "text",
+    "text": "e formally computed as follows. Let M[t >\nM1,t h e n M1( p1) = M( p1) + 1, where p1 = t(s).I f p =\n(s)t is a second stage place, then the added token in p1 can\nbe denoted as ( ty , f (t) + d( p1), f (t)). Otherwise, it can be\ndenoted as ( ty , f (t) + d( p1), tl).I f t(r) \u0003=\u2205 ,l e t t(r) = r2.\nM1(r2) = M(r2) + 1. The added token in r2 can be denoted\nas ( ty , f (t), tl).\nRemark 2: The second safety principle is ful\ufb01lled as follows.\nAt \ufb01rst, RNPN\u2019s current marking, and the attributes of tokens\nare all recorded in a control cen ter. Then, the current marking\nand the attributes of tokens are updated with the change of a\nrailway network in real time. Once a sensor on a block section\ndetects a new signal, the control center \ufb01res its corresponding\ntransition t from the current marking. At the same time,\nthe control center updates the current marking to the resulting\nmarking after \ufb01ring t and the attributes of tokens according\nto the above formulas. MHT is considered in computing f (t)\nwhich "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_30",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 31",
+    "type": "text",
+    "text": "me time,\nthe control center updates the current marking to the resulting\nmarking after \ufb01ring t and the attributes of tokens according\nto the above formulas. MHT is considered in computing f (t)\nwhich is related with the computation of tokens in t\n(s) and t(r).\nHence, it is also considered in the computation of tokens in t(s)\nand t(r). Thus, the markings computed by these formulas can\navoid the con\ufb02ict caused by the violation of the second safety\nprinciple. Since these formulas do not forbid the \ufb01ring of any\ntransitions, the number of reachable markings of a railway\nnetwork is not reduced by them.\nNote that the core of this ful\ufb01llment is the formulas in\nthe two paragraphs before Rema rk 2. Since the computational\ncomplexity of used formulas are all O(1) and no for-loop/\nwhile-loop/recursion exists in the ful\ufb01llment, the complexity\nof the ful\ufb01llment of the second safety principle is O(1). Thus,\nthe proposed method can handle such con\ufb02icts in large scale\nrailway networks. Now, we give an "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_31",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 32",
+    "type": "text",
+    "text": " exists in the ful\ufb01llment, the complexity\nof the ful\ufb01llment of the second safety principle is O(1). Thus,\nthe proposed method can handle such con\ufb02icts in large scale\nrailway networks. Now, we give an example to illustrate how\na time constraint is imposed on RNPN.\nExample 2 : Consider RNPN in Fig. 3(b). For simplicity,\nsuppose that d( p) = 2,\u2200p \u2208 P\ns ,a n dM H T = 1. At M0,\nthe tokens in D11 are all denoted as (1, 0, 0), the tokens in\nD21 are all denoted as (2, 0, 0), and the tokens in b1, b2,a n db3\nare all denoted as (0, 0, 0). At M0, t11 and t21 are enabled. The\ncurrent time is \u03c4= 0. M[t11 > M1 = 4D11 +5D21+ p11+b2+\nb3. f (t11) = max{max{0 + 0, 0}, 0}= 0, and \u03c4= f (t11) = 0.\nSince D11 is not a second stage place, the token in p11 at M1\nis denoted as (1, 0 + 2, 0) = (1, 2, 0). At M1, t12 and t21 are\nenabled. M1[t12 > M2 = 4D11 + 5D21 + p12 + b2 + b3.S i n c e\n(r)t12 =\u2205 , f (t12) = max{2, 0}= 2, and \u03c4 = f (t12) = 2.\nSince p11 = (s)t12 is not a second stage place, the token in\np12 at M2"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_32",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 33",
+    "type": "text",
+    "text": "and t21 are\nenabled. M1[t12 > M2 = 4D11 + 5D21 + p12 + b2 + b3.S i n c e\n(r)t12 =\u2205 , f (t12) = max{2, 0}= 2, and \u03c4 = f (t12) = 2.\nSince p11 = (s)t12 is not a second stage place, the token in\np12 at M2 is denoted as (1, 2 + 2, 0) = ( 1 ,4 ,0 ) .A t M2, t13\nand t21 are enabled. M2[t13 > M3 = 4D11 + 5D21 + p13 + b3.\nSince (r)t13 = b2, f (t13) = max{max{0 + 0, 4}, 2}= 4, and\n\u03c4 = f (t13) = 4. Since p12 = (s)t13 is a second stage place,\nthe token in p13 at M3 is denoted as (1, 4 + 2, 4) = (1, 6,\n4). At M3, t14 and t21 are enabled. M3[t14 > M4 = 4D11 +\n5D21+ p14+b1+b3.S i n c e(r)t14 =\u2205 , f (t14) = max{6, 4}= 6,\nand \u03c4= f (t14) = 6. Since p13 = (s)t14 is not a second stage\nplace, the token in p14 at M4 is denoted as (1, 6 + 2, 4) =\n( 1 ,8 ,4 ) .S i n c eb1 = t(r)\n14 ,t h et o k e ni n b1 at M4 is denoted\na s( 1 ,6 ,4 ) .\nAlthough these constraints can prevent RNPN from reaching\ncon\ufb02ict markings, they cannot avoid deadlocks in RNPN. Take\nthe RNPN in Fig. 3(b) as an example. M = 4D11 + 4D21 +\np1"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_33",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 34",
+    "type": "text",
+    "text": "denoted\na s( 1 ,6 ,4 ) .\nAlthough these constraints can prevent RNPN from reaching\ncon\ufb02ict markings, they cannot avoid deadlocks in RNPN. Take\nthe RNPN in Fig. 3(b) as an example. M = 4D11 + 4D21 +\np14 + p22 + b1 is a marking reachable under these time\nconstraints. At M, a train is running on b2 and waiting to\nrun on b3, while a train is running on b3 and waiting to run\non b2. A deadlock occurs at M. To avoid such deadlocks,\na DAP is required.\nIV . D EADLOCK AVOIDANCE POLICY BASED ON\nBANKER \u2019S ALGORITHM\nAccording to RNPN structure, we know that it belongs\nto the class of extended system of simple sequential\nprocesses with resources (ES 3PR) developed in [20] for auto-\nmated manufacturing systems. Also, RNPN is a subclass of\nS\n4PR [44].\nNote that there are uncontrollable transitions in RNPN. For\nexample, in RNPN in Fig. 3(b), the set of uncontrollable\ntransitions is { t\n12, t14, t16, t17, t18, t22, t24, t26, t27, t28}.\nAlthough the structure of RNPN belongs to ES 3PR and S 4PR,\nthe cont"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_34",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 35",
+    "type": "text",
+    "text": ". For\nexample, in RNPN in Fig. 3(b), the set of uncontrollable\ntransitions is { t\n12, t14, t16, t17, t18, t22, t24, t26, t27, t28}.\nAlthough the structure of RNPN belongs to ES 3PR and S 4PR,\nthe controllers proposed in [19], [20], [45] for ES 3PR and\nthose proposed in [18], [25], [44] for S 4PR cannot be applied\nfor RNPN directly because they cannot handle uncontrollable\ntransitions. The scale of the studied railway network is usually\nlarge. Thus, a polynomial DAP that can handle uncontrollable\ntransitions is needed. This section proposes a DAP based on\nthe Banker\u2019s Algorithm [9] for RNPN.\nGiven M \u2208 R(N, M\n0),i f M f \u2208 R(N, M), M is safe;a n d\notherwise, M is unsafe. Note that in original Petri net terms,\na safe marking means that each place has 0 or 1 token in such\na marking. To avoid the confusion, we use bold face \u201csafe\u201d\nand \u201cunsafe\u201d in this paper.\nIn RNPN, the safeness of a marking can be extended. Let\n\u0007 = {M \u2208 R(N, M0)|M(Ps) = 0}, M \u2208 \u0007 be a marking,\nDq1 \u2208 PD (q \u2208 Q) be a docking"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_35",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 36",
+    "type": "text",
+    "text": "e confusion, we use bold face \u201csafe\u201d\nand \u201cunsafe\u201d in this paper.\nIn RNPN, the safeness of a marking can be extended. Let\n\u0007 = {M \u2208 R(N, M0)|M(Ps) = 0}, M \u2208 \u0007 be a marking,\nDq1 \u2208 PD (q \u2208 Q) be a docking place \f M(Dq1)> 0,\nand Dq2 \u2208 PD such that there is a route from Dq1 to Dq2.\nSince M0 is an acceptable initial marking, all M(Dq1) trains\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10768 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022\nin Dq1 can move to Dq2 one by one. It means that \u2200M \u2208 \u0007,\nM f \u2208 R(N, M). Thus, if \u0007 \u2229 R(N, M) \u0003=\u2205 , M is safe;a n d\notherwise, M is unsafe.\nA marking is a deadlock one if there is at least one\nstage-enabled but dead transition at it [55]. Obviously, a safe\nmarking is deadlock-free since M f is reachable from it.\nA policy is a DAP if it avoids a system\u2019s evolution from safe\nmarkings to unsafe ones. Generally speaking, a DAP"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_36",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 37",
+    "type": "text",
+    "text": " at it [55]. Obviously, a safe\nmarking is deadlock-free since M f is reachable from it.\nA policy is a DAP if it avoids a system\u2019s evolution from safe\nmarkings to unsafe ones. Generally speaking, a DAP is better\nthan another one if it accepts more safe markings.\nTo detect if a marking M \u2208 R(N, M\n0) is safe, we only need\nto move all trains in Ps to their corresponding docking places.\nIf all trains in Ps can be moved to their corresponding docking\nplaces in some order, then the marking is safe.I tm u s tb e\npointed out that this is a suf\ufb01cient condition for a marking to\nbe safe. There may be some safe markings for which such an\norder does not exist. A Modi\ufb01ed Banker\u2019s Algorithm (MBA)\nis proposed to detect if such order exists. To explain MBA\nclearly, some new notations are introduced next.\nA stage path is named as a docking stage path if the last\nplace is a docking one. The length of a docking stage path\nis equal to the number of transitions in it. Let p \u2208 Ps be\na place and \u03d1( p) represen"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_37",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 38",
+    "type": "text",
+    "text": "stage path is named as a docking stage path if the last\nplace is a docking one. The length of a docking stage path\nis equal to the number of transitions in it. Let p \u2208 Ps be\na place and \u03d1( p) represent the set of all docking stage paths\nstarting from p. \u03d1( p) can be easily computed by a polynomial\ndepth-\ufb01rst procedure in [41]. \u03d1( p) may be used many times.\nIn order to save computation time, we compute \u03d1( p) for p \u2208\nPs before executing MBA. Given a docking stage path \u03c0,l e t\n\u03c3(\u03c0) be the transition sequence in \u03c0. Given a marking M, \u03c0 is\ncalled executable at M if M[\u03c3(\u03c0)> . A place p \u2208 Ps is called\na terminated one at M if \u2203\u03c0 \u2208 \u03d1( p) \f M[\u03c3(\u03c0) >. \t(M) =\n1( t r u e )i fM is accepted by MBA; 0 (false) otherwise. Now,\nMBA is given.\nIn MBA, Lines 4-5 \ufb01nd a place p \u2208 Ps \f M1( p)> 0a n d\nthere is an executable docking stage path \u03c0 \u2208 \u03d1( p).I fs u c h\na place p is found, then Lines 6-9 executes \u03c3(\u03c0) from M1\nrepeatedly until all trains in p are moved to docking places.\nThe execution of \u03c3(\u03c0) frees so"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_38",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 39",
+    "type": "text",
+    "text": "executable docking stage path \u03c0 \u2208 \u03d1( p).I fs u c h\na place p is found, then Lines 6-9 executes \u03c3(\u03c0) from M1\nrepeatedly until all trains in p are moved to docking places.\nThe execution of \u03c3(\u03c0) frees some resources. They may make\nsome p \u2208 Ps and M1( p)> 0 satisfy that \u2203\u03c0 \u2208 \u03d1( p) \f\nM1[\u03c3(\u03c0)> .T h u s ,w es e t\ufb02 a g= true in Line 10, which makes\nthe while-loop able to re-execute once again. If Lines 4-5\ncannot \ufb01nd a place p \u2208 P\ns \f M1( p)> 0a n dt h e r ei sa n\nexecutable docking stage path \u03c0 \u2208 \u03d1( p), then the while-loop\nis terminated. Line 14 judges whether M1(Ps) = 0 or not.\nIf so, M is accepted by MBA since all trains in Ps can be\nmoved to the corresponding doc king places. Otherwise, MBA\nrejects M since some trains in Ps cannot be moved to their\ncorresponding docking places from M.\nLemma 1: A marking M is accepted by MBA if and only\nif there is an order of all marked places in Ps at M such that\nthey can be terminated sequentially.\nProof: Suppose that a marking M is accepted by MBA.\nClea"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_39",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 40",
+    "type": "text",
+    "text": " A marking M is accepted by MBA if and only\nif there is an order of all marked places in Ps at M such that\nthey can be terminated sequentially.\nProof: Suppose that a marking M is accepted by MBA.\nClearly, there is an order of all marked places in Ps at M\nsuch that they can be terminated sequentially. Such an order\ncan be obtained by orderly storing the places whose tokens\nare cleared in Line 6 of MBA.\nSuppose that there is an order of all marked places in Ps\nat M such that they can be terminated sequentially. Then,\nthe while-loop can access one or more such places and clear\ntheir tokens at each loop. Since the number of marked places\nMBA\nInput: A marking M \u2208 R(N, M0);\nOutput: \t(M);/ \u2217\t(M) = true or false \u2217/\n1: \t(M) = false; M1 = M;\ufb02 a g = true; /\u2217 initialization\u2217/\n2: While (\ufb02ag) do\n3: \ufb02ag = false;\n4: for ( p \u2208 P and M1( p)> 0) do\n5: if(\u2203\u03c0 \u2208 \u03d1( p) \f M1[\u03c3(\u03c0)>) do\n6: While (M1( p)> 0) do\n7: let M1[\u03c3(\u03c0)> M2;\n8: M1 = M2;\n9: end While\n10: \ufb02ag = true; /\u2217 while-loop can continue \u2217/\n11: end if\n"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_40",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 41",
+    "type": "text",
+    "text": "= false;\n4: for ( p \u2208 P and M1( p)> 0) do\n5: if(\u2203\u03c0 \u2208 \u03d1( p) \f M1[\u03c3(\u03c0)>) do\n6: While (M1( p)> 0) do\n7: let M1[\u03c3(\u03c0)> M2;\n8: M1 = M2;\n9: end While\n10: \ufb02ag = true; /\u2217 while-loop can continue \u2217/\n11: end if\n12: end for\n13: end While\n14: if (M1(P) = 0)\n15: \t(M) = true;\n16: end if\n17: return \t(M);\nat M is \ufb01nite, all marked places are c leared eventually. Since\nall tokens in Ps at M are cleared, \t(M) = true, i.e., M is\naccepted by MBA.\nLemma 2: Let M \u2208 RMBA(N, M0) be a marking reachable\nfrom M0 under MBA, and t \u2208 T be an uncontrollable\ntransition such that M[t > M1. Then, M1 \u2208 RMBA(N, M0).\nProof: By Remark 1, (r)t =\u2205 . Firing any uncontrollable\ntransition t does not decrease any number of tokens in PR .\nSince M \u2208 RMBA(N, M0), M[t > M1 \u2208 RMBA(N, M0).\nTheorem 1: MBA is a DAP for RNPN.\nProof: By Lemma1, MBA accepts a marking M only if\nthere is an order of all marked places in Ps at M such that\nthey can be terminated sequentially. It means that \u2203 transition\nsequence \u03c3 \f M[\u03c3> M1 \u2208 \u0007. Thus, \u2200M \u2208 RMBA("
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_41",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 42",
+    "type": "text",
+    "text": ", MBA accepts a marking M only if\nthere is an order of all marked places in Ps at M such that\nthey can be terminated sequentially. It means that \u2203 transition\nsequence \u03c3 \f M[\u03c3> M1 \u2208 \u0007. Thus, \u2200M \u2208 RMBA(N, M0),\nM is safe. By Lemma 2, MBA never forbids the \ufb01ring of an\nuncontrollable transition.\nTheorem 2: The complexity of MBA is polynomial.\nProof: At each iteration, the \ufb01rst while-loop obtains one\nor more marked places in Ps and clears their tokens. Thus,\nthe \ufb01rst while-loop can execute no more than |Ps| times. The\ncost of \ufb01nding a marked place in Ps such that it can be\nterminated at M1 is O(|Ps|\u00d7| W|\u00d7| T|) because there are at\nmost |Ps| places to be detected, |\u03d1( p)|\u2264| W| holds for \u2200p \u2208\nPs , and the number of transitions in a path is bounded by |T|.\nThe second while-loop moves a train in p to a docking place\nat each iteration. Since M1( p) \u2264 max{C(r)|r \u2208 B \u222a S} =\nCmax, the second while-loop can execute no more than Cmax\ntimes. Thus, O(MBA) = O(|Ps|2\u00d7|W|\u00d7| T|\u00d7 Cmax).I nm o s t\ncases, |T| "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_42",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 43",
+    "type": "text",
+    "text": "o a docking place\nat each iteration. Since M1( p) \u2264 max{C(r)|r \u2208 B \u222a S} =\nCmax, the second while-loop can execute no more than Cmax\ntimes. Thus, O(MBA) = O(|Ps|2\u00d7|W|\u00d7| T|\u00d7 Cmax).I nm o s t\ncases, |T| is approximately equal to |Ps|, |\u03d1( p)|= 1 holds\nfor \u2200p \u2208 Ps ,a n d M1( p) = 1. Thus, O(MBA) can be roughly\nevaluated as O(|Ps|3).\nThe con\ufb02ict avoidance method based on RNPN and MBA\nwork together as follows. Let M \u2208 RMBA(N, M0) denote\na marking reachable from M0 under MBA, and t \u2208 T \f\nM[t > M1. First, we need to detect if M1 is accepted by MBA.\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\nLUO et al. : PLACE-TIMED PN-BASED METHOD TO A VOID DEADLOCK AND CONFLICT 10769\nFig. 5. (a) RP 2No f( N , M0) and (b) RP 2No f( N1 , M10).\nIf yes, then compute the tokens in t(s) and t(r) by the formulas\npresented in Section III.B. Otherwise, the \ufb01ring of t at M\nis forbidden. Since the formulas in Section II"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_43",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 44",
+    "type": "text",
+    "text": " and (b) RP 2No f( N1 , M10).\nIf yes, then compute the tokens in t(s) and t(r) by the formulas\npresented in Section III.B. Otherwise, the \ufb01ring of t at M\nis forbidden. Since the formulas in Section III.B can avoid\ncon\ufb02icts and MBA can avoid dead locks, all obtained markings\nare con\ufb02ict/deadlock-free.\nAlthough MBA is not optimal, it can detect the safeness\nof a making quickly. Besides, it can generally gain satis\ufb01ed\npermissiveness for RNPN, to be shown next.\nV. P\nERFORMANCE TEST AND COMPARA TIVE STUDIES\nA. Performance T est\nSafety principles only constrain the \ufb01ring time of transitions.\nThey do not forbid the \ufb01ring of any transitions. Thus, they do\nnot affect the number of reachable states of a system. To test\nthe permissiveness of MBA, a railway network with seven\nblock sections and one station is used as an example. There\nare two types of trains running in this network, i.e., Q = N\n2.\nThey have one and two routes, i.e.,\nw1 = D11b1b2b3s1b4 D12,\nw2 = D21b5s1b3b2b1 D22,a n d\nw3 = D21b5s1"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_44",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 45",
+    "type": "text",
+    "text": "ation is used as an example. There\nare two types of trains running in this network, i.e., Q = N\n2.\nThey have one and two routes, i.e.,\nw1 = D11b1b2b3s1b4 D12,\nw2 = D21b5s1b3b2b1 D22,a n d\nw3 = D21b5s1b6b7b1 D22, respectively.\nThen, W ={ w1, w2, w3}. Routes w1-w3 are modeled by\nD11t11 p11 t12 p12t13 p13t14 p14 t15 p15t16 p16t17 p17t18 p18t19 p19\nt110 p110t111 p111t112 D12, D21t21 p21t22 p22t23 p23t24 p24t25 p25\nt26 p26t27 p27t28 p28t29 p29 t210 p210t211 p211t212 D22,a n d D21t21\np21t22 p22t23 p23t24 p24t35 p35t36 p36t37 p37t38 p38t39 p39t310 p310\nt311 p311t312 D22, respectively. Suppose that M0(s1) = 2,\nM0(D11) = M0(D21) = 20, and M0(D12) = M0(D22) = 0.\nThe model of the whole network is denoted as ( N,\nM0) = (Ps \u222a PR \u222a PD , T , F, M0),w h i c hi ss h o w n\nin Fig. 5( a). Algorithm ES [53] is applied to compute\n|RMBA(N, M0)|. In order to avoid the computational result\nbeing affected by M0(D11) and M0(D21), two markings\nM1 and M2 are taken as the same one if M1( p) = M2( p),\n\u2200p \u2208 Ps \u222a PR "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_45",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 46",
+    "type": "text",
+    "text": "s applied to compute\n|RMBA(N, M0)|. In order to avoid the computational result\nbeing affected by M0(D11) and M0(D21), two markings\nM1 and M2 are taken as the same one if M1( p) = M2( p),\n\u2200p \u2208 Ps \u222a PR . By Algorithm ES, |RMBA(N, M0)|= 24, 534.\nThe number of safe markings of ( N, M0) is also 24, 534.\nIt means that MBA is an optimal deadlock avoidance policy\nfor such a network example.\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10770 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022\nTABLE III\nSIMULA TION RESUL TS OF MBA\nSince the computational complexities of the formulas for\ncon\ufb02ict avoidance are all O(1), testing their runtime is mean-\ningless. To test the runtime of MBA, a large railway network\nis constructed. There are \ufb01ve types of trains running in this\nnetwork, i.e., Q = N5. The routes of types-1 \u223c 2 trains are the\nsame with those in Fig. 5( a). T"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_46",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 47",
+    "type": "text",
+    "text": "e runtime of MBA, a large railway network\nis constructed. There are \ufb01ve types of trains running in this\nnetwork, i.e., Q = N5. The routes of types-1 \u223c 2 trains are the\nsame with those in Fig. 5( a). Types-3\u223c 5 trains all have one\nroute, i.e.,\nw4 = D31b8b7b6b9b10 D32,\nw5 = D41b10b9b5b11s2 D42,a n d\nw6 = D51b12b13s2b11b14 D52, respectively.\nThen, W ={ w1, w2, w3, w4, w5, w6}. Routes w4-w6 are\nmodeled by D31t41 p41t42 p42t43 p43t44 p44t45 p45t46 p46t47 p47\nt48 p48t49 p49t410 p410 t411 p411t412 D32, D41t51 p51t52 p52t53 p53\nt54 p54t55 p55t56 p56t57 p57t58 p58t59 p59t510 p510t511 p511t512 D42,\nand D51t61 p61t62 p62t63 p63t64 p64t65 p65t66 p66t67 p67t68 p68t69\np69t610 p610t611 p611t612 D52, respectively. Suppose that\nM0(s2) = 2, M0(D31) = M0(D41) = M0(D51) = 20, and\nM0(D32) = M0(D42) = M0(D52) = 0. The PN model of\nroutes w4-w6 is denoted as ( N1, M10),w h i c hi ss h o w n\nin Fig. 5( b). The model of the whole system is denoted\nas ( N, M0) \u2297 (N1, M10).N o w ,w eu s e( N, M0) and ( N,\nM0) \u2297 ("
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_47",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 48",
+    "type": "text",
+    "text": " 0. The PN model of\nroutes w4-w6 is denoted as ( N1, M10),w h i c hi ss h o w n\nin Fig. 5( b). The model of the whole system is denoted\nas ( N, M0) \u2297 (N1, M10).N o w ,w eu s e( N, M0) and ( N,\nM0) \u2297 (N1, M10) to \ufb01nd the runtime of MBA. All algorithms\nare implemented in C ++. They are compiled by MSBuild\n4.0 and run on a 3.4 GHz desktop computer with 16G\nRAM. The operating system of the computer is Windows\n7 Professional. Simulation results can be found in Table III.\nFrom it, it is easy to \ufb01nd that MBA can detect the safety\nof a marking in 3.58937 \u03bcs averagely. Besides, we \ufb01nd that\nA\nR \u2248 0.00155 \u00d7| Ps|\u00d7 ANM \u00d7 ALD \u03bcs, where A R means\nAverage Runtime; A NM means Average Number of Marked\nplaces in Ps of all tested markings; and A LD means Average\nLength of Docking stage paths from marked places in Ps of\nall tested markings.\nConsider a large practical instance, i.e., the Schiphol railway\nnetwork shown in Fig. 6. It consists of 86 block sections\nand 16 stations with two traf\ufb01c directions. Th"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_48",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 49",
+    "type": "text",
+    "text": "s in Ps of\nall tested markings.\nConsider a large practical instance, i.e., the Schiphol railway\nnetwork shown in Fig. 6. It consists of 86 block sections\nand 16 stations with two traf\ufb01c directions. There are at\nmost 54 trains circulating in this network. More details about\nthis railway network can be found in [2]. The longest route\ncontains 25 resources (block sections or stations). It means\nthat the length of the longest docking stage path is 2 \u00d7 25 +\n2 = 52. For this network, there are at most 9 routes for\neach direction. Thus, the tota l number of routes is no greater\nthan 18. The number of places corresponding to train stages is\nno greater than (52 \u2212 1) \u00d7 18 = 918. Since there are at most\n54 trains in this network simultaneously, the number of marked\nplaces will be no greater than 54. MBA can detect a marking\nof this network averagely in 0.00155 \u00d7 918 \u00d7 54 \u00d7 52 = 3,\n996 \u03bcs. Thus, MBA can handle such a practical instance.\nFig. 6. The Schiphol railway network.\nTABLE IV\nCOMPARISON RES"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_49",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 50",
+    "type": "text",
+    "text": "MBA can detect a marking\nof this network averagely in 0.00155 \u00d7 918 \u00d7 54 \u00d7 52 = 3,\n996 \u03bcs. Thus, MBA can handle such a practical instance.\nFig. 6. The Schiphol railway network.\nTABLE IV\nCOMPARISON RESUL TS OF EXISTING POLICIES\nB. Comparative Studies\nThere are four existing logical control methods for railway\nnetworks, as proposed in [11]\u2013[14]. Note that the control\nmethods in [11] and [12] are the same and those in [13]\nand [14] are the same, too. Thus, we only compare MBA with\nthose logical control methods in [12] and [14]. Comparative\nresults are shown in Table IV .\nFrom Table IV , we know that existing methods cannot be\napplied to railway networks with multiple resource acquisition.\nNone of them can be applied to RNPN. Thus, MBA is the only\none applicable to RNPN to the best knowledge of the authors.\nThe computational complexity of the method in [12] is\nexponential with the net size. The method in [14] needs to\nsolve an integer programming problem, which is NP-complete.\nThus, the me"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_50",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 51",
+    "type": "text",
+    "text": "f the authors.\nThe computational complexity of the method in [12] is\nexponential with the net size. The method in [14] needs to\nsolve an integer programming problem, which is NP-complete.\nThus, the methods in [12] and [14] cannot be applied to large\nrailway networks directly. Since the complexity of MBA is\npolynomial, it is suitable for large railway networks.\nAmong all logical control methods for railway networks,\nonly ours consider con\ufb02ict and deadlock avoidance at the same\ntime. Since con\ufb02ict avoidance is necessary for scheduling\nalgorithms, only our method can be integrated with existing\nones directly. MBA is the only deadlock avoidance policy for\nrailway networks to our best knowledge. Thus, this work is of\nsigni\ufb01cance in advancing the \ufb01eld of railway network control.\nIn order to compare the permissiveness of MBA and existing\nlogical control methods, i.e., F\n2006 [12] and G 2008 [14], we test\nMBA by the railway networks in [12] and [14]. The railway\nnetwork in [12] contains \ufb01ve st"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_51",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 52",
+    "type": "text",
+    "text": "are the permissiveness of MBA and existing\nlogical control methods, i.e., F\n2006 [12] and G 2008 [14], we test\nMBA by the railway networks in [12] and [14]. The railway\nnetwork in [12] contains \ufb01ve stations, i.e., s1-s5 with C(s1) =\nC(s2) = 2a n d C(s3) = C(s4) = C(s5) = 1, and \ufb01ve block\nsections i.e., b1-b5 with C(bi) = 1, for i = 1-5. Suppose that\nC(s1) = C(s2) = 2a n d C(s3) = C(s4) = C(s5) = 1, and\nC(bi) = 1, for i = 1-5. Note that their capacities are reduced\nbecause the number of reachable markings under those capac-\nities given in [12] is too large to be enumerated. There are four\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\nLUO et al. : PLACE-TIMED PN-BASED METHOD TO A VOID DEADLOCK AND CONFLICT 10771\ntypes of trains running in the railway network. Their routes are\nw1 = s1b1s2b2s3b4s4, w2 = s4b4s3b3s2b1s1, w3 = s1b1s2b5s5,\nand w4 = s5b5s2b1s1, respectively. The PN model of the\nne"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_52",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 53",
+    "type": "text",
+    "text": "AND CONFLICT 10771\ntypes of trains running in the railway network. Their routes are\nw1 = s1b1s2b2s3b4s4, w2 = s4b4s3b3s2b1s1, w3 = s1b1s2b5s5,\nand w4 = s5b5s2b1s1, respectively. The PN model of the\nnetwork, i.e., ( N2, M20) and F 2006 [12] for ( N2, M20) can be\nfound at https://github.com/JianchaoLuo/PNsAndControllers.\n|RF2006 (N2, M20)|= 56, 619, and |RMBA(N2, M20)|=\n222, 857, which is much bigger than 56, 619. Generally\nspeaking, the larger number of reachable markings, the better\nperformance of the control method [53]. Thus, MBA performs\nbetter than F\n2006 for the studied railway network.\nThe railway network in [14] contains four stations, i.e.,\ns1-s4 with C(s1) = 3, C(s2) = 2 = C(s3) = C(s4) =\n2, and four block sections i.e., b1-b4 with C(bi) = 1,\nfor i = 1-4. There are two types of trains running in\nit. Their routes are w1 = s1b1s2b2s3b4s4,a n d w2 =\ns4b4s3b3s2b1s1, respectively. The PN model of the network,\ni.e., ( N3, M30) and G 2008 [14] for ( N3, M30) can be found at\nhttps://g"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_53",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 54",
+    "type": "text",
+    "text": "ains running in\nit. Their routes are w1 = s1b1s2b2s3b4s4,a n d w2 =\ns4b4s3b3s2b1s1, respectively. The PN model of the network,\ni.e., ( N3, M30) and G 2008 [14] for ( N3, M30) can be found at\nhttps://github.com/JianchaoLuo/PNsAndControllers.\n|RG2008(N3, M30)|= 20, 724, and |RMBA(N3, M30)|= 41,\n228, which is much bigger than 20, 724. Thus, MBA performs\nbetter than G\n2008 for the studied railway network.\nVI. C ONCLUSION\nThis work focuses on the con\ufb02ict and deadlock avoidance\nof railway networks with \ufb02exible routes. To characterize\nsuch networks, a new class of place-timed Petri net called\nRNPN is de\ufb01ned. Based on it, a con\ufb02ict avoidance method\nwhose complexity is O(1) is proposed. Also, a polynomial\ndeadlock avoidance policy based on the Banker\u2019s Algorithm is\nproposed for the \ufb01rst time for such networks. The con\ufb02ict\navoidance method together with DAP makes a railway net-\nwork con\ufb02ict/deadlock-free. To test its permissiveness and\nruntime, small and large railway networks are constructed.\nT"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_54",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 55",
+    "type": "text",
+    "text": "ch networks. The con\ufb02ict\navoidance method together with DAP makes a railway net-\nwork con\ufb02ict/deadlock-free. To test its permissiveness and\nruntime, small and large railway networks are constructed.\nThe results show that it is the optimal one for the small one.\nBesides, it can detect the safety of a marking of the large\none quickly. A large practical instance is adopted to analyze\nits effectiveness. Analytic results show that it can handle\nit well. To compare its permissiveness with existing logical\ncontrol methods, we test it by using the railway networks in\nexisting work [12], [14]. The results show that it is much more\npermissive than existing methods. We plan to \ufb01nd the optimal\nDAP for RNPN as our future work. Besides, extending the\nproposed DAP for railway networks with unreliable signals\nand sensors to eliminate traf\ufb01c jam propagation [29] is in our\nfuture research agenda. Integrating the proposed policies into\nscheduling algorithms [23], [46], [51], [59], [60] for water\ntranspor"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_55",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 56",
+    "type": "text",
+    "text": "nals\nand sensors to eliminate traf\ufb01c jam propagation [29] is in our\nfuture research agenda. Integrating the proposed policies into\nscheduling algorithms [23], [46], [51], [59], [60] for water\ntransportation systems and road transportation systems [6] is\nalso an interesting problem.\nR\nEFERENCES\n[1] A. D\u2019Ariano, M. Pranzo, and I. A. Hansen, \u201cCon\ufb02ict resolution and\ntrain speed coordination for solving real-time timetable perturbations,\u201d\nIEEE Trans. Intell. Transp. Syst. , vol. 8, no. 2, pp. 208\u2013222, Jun. 2007.\n[2] A. D\u2019Ariano, D. Pacciarelli, and M. Pranzo, \u201cA branch and bound\nalgorithm for scheduling trains in a railway network,\u201d Eur . J. Oper . Res.,\nvol. 183, no. 2, pp. 643\u2013657, 2007.\n[3] M. Bossia, C. Mannino, and I. V asilyev, \u201cThe dispatching problem on\nmultitrack territories: Heuristic approaches based on mixed integer linear\nprogramming,\u201d Networks, vol. 62, no. 4, pp. 315\u2013326, Dec. 2013.\n[4] V . Cacchiani, D. Huisman, and M. Kidd, \u201cAn overview of recovery\nmodels and algorithms for"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_56",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 57",
+    "type": "text",
+    "text": " approaches based on mixed integer linear\nprogramming,\u201d Networks, vol. 62, no. 4, pp. 315\u2013326, Dec. 2013.\n[4] V . Cacchiani, D. Huisman, and M. Kidd, \u201cAn overview of recovery\nmodels and algorithms for real-time railway rescheduling,\u201d Transp. Res.\nB, Methodol. , vol. 63, pp. 15\u201337, May 2014.\n[5] B. Hruz and M. Zhou, Modeling and Control of Discrete Event Dynamic\nSystems. New Y ork, NY , USA: Springer, 2007.\n[6] G. Cavone, M. Dotoli, and C. Seatzu, \u201cA survey on Petri net models for\nfreight logistics and transportation systems,\u201d IEEE Trans. Intell. Transp.\nSyst., vol. 19, no. 6, pp. 1795\u20131813, Jun. 2018.\n[7] J.-F. Cordeau, P . Toth, and D. Vigo, \u201cA survey of optimization models\nfor train routing and scheduling,\u201d Transp. Sci. , vol. 32, pp. 380\u2013404,\nNov. 1998.\n[8] F. Corman, A. D\u2019Ariano, D. Pacciarelli, and M. Pranzo, \u201cBi-objective\ncon\ufb02ict detection and resolution in railway traf\ufb01c management,\u201d Transp.\nRes. C, Emerg. Tech. , vol. 20, no. 1, pp. 79\u201394, Feb. 2012.\n[9] E. W. Dijkstra, Co-Oper"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_57",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 58",
+    "type": "text",
+    "text": "cciarelli, and M. Pranzo, \u201cBi-objective\ncon\ufb02ict detection and resolution in railway traf\ufb01c management,\u201d Transp.\nRes. C, Emerg. Tech. , vol. 20, no. 1, pp. 79\u201394, Feb. 2012.\n[9] E. W. Dijkstra, Co-Operating Sequential Processes .N e wY o r k ,N Y ,\nUSA: Academic, 1965.\n[10] M. J. Dorfman and J. Medanic, \u201cScheduling trains on a railway\nnetwork using a discrete event model of railway traf\ufb01c,\u201d Transp. Res.\nB, Methodol. , vol. 38, no. 1, pp. 81\u201398, Jan. 2004.\n[11] M. P . Fanti, A. Giua, and C. Seatzu, \u201cA deadlock prevention method\nfor railway networks using monitors for colored Petri nets,\u201d in Proc.\nIEEE Int. Conf. Syst., Man Cybern. Conf. Theme-Syst. Secur . Assurance ,\nWashington, DC, USA, Oct. 2003, pp. 1866\u20131873.\n[12] M. P . Fanti, A. Giua, and C. Seatzu, \u201cMonitor design for colored\nPetri nets: An application to deadlock prevention in railway networks,\u201d\nControl Eng. Pract. , vol. 14, no. 10, pp. 1231\u20131247, Oct. 2006.\n[13] A. Giua and C. Seatzu, \u201cLiveness enforcing supervisors for railwa"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_58",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 59",
+    "type": "text",
+    "text": "ets: An application to deadlock prevention in railway networks,\u201d\nControl Eng. Pract. , vol. 14, no. 10, pp. 1231\u20131247, Oct. 2006.\n[13] A. Giua and C. Seatzu, \u201cLiveness enforcing supervisors for railway\nnetworks using ES\n2PR Petri nets,\u201d in Proc. 6th Int. Workshop Discrete\nEvent Syst. , Zaragoza, Spain, Oct. 2002, pp. 55\u201360.\n[14] A. Giua and C. Seatzu, \u201cModeling and supervisory control of railway\nnetworks using Petri nets,\u201d IEEE Trans. Autom. Sci. Eng. , vol. 5, no. 3,\npp. 431\u2013445, Jul. 2008.\n[15] R. M. P . Goverde, F. Corman, and A. D\u2019Ariano, \u201cRailway line capacity\nconsumption of different railway s ignalling systems under scheduled and\ndisturbed conditions,\u201d J. Rail Transp. Planning Manage. , vol. 3, no. 3,\npp. 78\u201394, Aug. 2013.\n[16] M. Hlissikoff, \u201cAn object-oriented approach to an information and\ndecision support system for railway traf\ufb01c control,\u201d Eng. Appl. Artif.\nIntell., vol. 1, no. 1, pp. 25\u201340, 1998.\n[17] P . G. Howlett, I. P . Milroy, and P . J. Pudney, Energy Ef\ufb01cient Train\n"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_59",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 60",
+    "type": "text",
+    "text": "mation and\ndecision support system for railway traf\ufb01c control,\u201d Eng. Appl. Artif.\nIntell., vol. 1, no. 1, pp. 25\u201340, 1998.\n[17] P . G. Howlett, I. P . Milroy, and P . J. Pudney, Energy Ef\ufb01cient Train\nControl. Berlin, Germany: Springer-V erlag, 1995.\n[18] H. Hu, M. Zhou, and Y . Liu, \u201cMaxima lly permissive distributed control\nof large scale automated manufacturing systems modeled with Petri\nnets,\u201d in Proc. IEEE Int. Conf. Autom. Sci. Eng. (CASE) , Madison, WI,\nUSA, Aug. 2013, pp. 1145\u20131150.\n[19] H. Hu, M. Zhou, and Z. Li, \u201cSupervisor optimization for deadlock\nresolution in automated manufacturing systems with Petri nets,\u201d IEEE\nTrans. Autom. Sci. Eng. , vol. 8, no. 4, pp. 794\u2013804, Oct. 2011.\n[20] Y . Huang, M. Jeng, X. Xie, and S. Chung, \u201cA deadlock prevention\npolicy for \ufb02exible manufacturing systems using siphons,\u201d in Proc.\nIEEE Int. Conf. Robot. Autom. (ICRA) , Seoul, South Korea, May 2001,\npp. 541\u2013546.\n[21] Y . Huang, L. Y ang, T. Tang, F. Cao, and Z. Gao, \u201cSaving energy\nand improving"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_60",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 61",
+    "type": "text",
+    "text": "g systems using siphons,\u201d in Proc.\nIEEE Int. Conf. Robot. Autom. (ICRA) , Seoul, South Korea, May 2001,\npp. 541\u2013546.\n[21] Y . Huang, L. Y ang, T. Tang, F. Cao, and Z. Gao, \u201cSaving energy\nand improving service quality: Bicriteria train scheduling in urban rail\ntransit systems,\u201d IEEE Trans. Intell. Transp. Syst. , vol. 17, no. 12,\npp. 3364\u20133379, Dec. 2016.\n[22] C. W. Janczura, \u201cModelling and analysis of railway network control\nlogic using colored Petri nets,\u201d Ph.D . dissertation, School Math., Univ.\nSouth Australia, Adela ide SA, Australia, Aug. 1998.\n[23] X. Jin, C. Xia, N. Guan, and P . Zeng, \u201cJoint algorithm of message\nfragmentation and no-wait scheduling for time-sensitive networks,\u201d\nIEEE/CAA J. Automatica Sinica , vol. 8, no. 2, pp. 478\u2013490, Feb. 2021.\n[24] J. T\u00f6rnquist Krasemann, \u201cDesign of an effective algorithm for fast\nresponse to the re-scheduling of railway traf\ufb01c during disturbances,\u201d\nTransp. Res. C, Emerg. Technol. , vol. 20, no. 1, pp. 62\u201378, Feb. 2012.\n[25] Z. Li and X. Ma"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_61",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 62",
+    "type": "text",
+    "text": "gn of an effective algorithm for fast\nresponse to the re-scheduling of railway traf\ufb01c during disturbances,\u201d\nTransp. Res. C, Emerg. Technol. , vol. 20, no. 1, pp. 62\u201378, Feb. 2012.\n[25] Z. Li and X. Ma, \u201cOn deadlock control using Petri nets and siphons\nfor automated manufacturing systems,\u201d in Proc. IEEE Int. Conf. Netw.,\nSens. Control, Lauderdale, FL, USA, Apr. 2006, pp. 227\u2013232.\n[26] H. Liu, M. Zhou, X. Guo, Z. Zhang, N. Bin, and T. Tang, \u201cTimetable\noptimization for regenerative energy utilization in subway systems,\u201d\nIEEE Trans. Intell. Transp. Syst. , vol. 20, no. 9, pp. 3247\u20133257,\nSep. 2019.\n[27] J. Liu, H. Guo, and Y . Y u, \u201cResearch on the cooperative train control\nstrategy to reduce energy consumption,\u201d IEEE Trans. Intell. Transp.\nSyst., vol. 18, no. 5, pp. 1134\u20131142, May 2017.\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10772 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEM"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_62",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 63",
+    "type": "text",
+    "text": "ized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n10772 IEEE TRANSACTIONS ON INTELLIGENT TRANSPORTA TION SYSTEMS, VOL. 23, NO. 8, AUGUST 2022\n[28] P . Liu, L. Y ang, Z. Gao, Y . Huang, S. Li, and Y . Gao, \u201cEnergy-\nef\ufb01cient train timetable optimization in the subway system with energy\nstorage devices,\u201d IEEE Trans. Intell. Transp. Syst. , vol. 19, no. 12,\npp. 3947\u20133963, Dec. 2018, doi: 10.1109/TITS.2018.2789910.\n[29] J. Luo, Y .-S. Huang, and Y .-S. Weng, \u201cDesign of variable traf\ufb01c light\ncontrol systems for preventing two-way grid network traf\ufb01c jams using\ntimed Petri nets,\u201d IEEE Trans. Intell. Transp. Syst. , vol. 21, no. 7,\npp. 3117\u20133127, Jul. 2020.\n[30] M. A. Marsan, S. Donatelli, F. Neri, and U. Rubino, \u201cDynamic\npolling orders in multiserver multiqueue systems,\u201d IEE Proc.-Commun.,\nvol. 142, no. 2, pp. 75\u201386, Apr. 1995.\n[31] M. A. Marsan and G. Chiola, \u201cOn Petri nets with deterministic and\nexponen"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_63",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 64",
+    "type": "text",
+    "text": "no, \u201cDynamic\npolling orders in multiserver multiqueue systems,\u201d IEE Proc.-Commun.,\nvol. 142, no. 2, pp. 75\u201386, Apr. 1995.\n[31] M. A. Marsan and G. Chiola, \u201cOn Petri nets with deterministic and\nexponentially distributed \ufb01ring times,\u201d in Advances in Petri Nets (Lecture\nNotes in Computer Science), vol. 266. Berlin, Germany: Springer-\nV erlag, 1987, pp. 132\u2013145.\n[32] A. Mascis, D. Pacciarelli, and M. Pranzo, \u201cScheduling models for short-\nterm railway traf\ufb01c optimisation,\u201d in Computer-aided Systems in Public\nTransport (Lecture Notes in Economics and Mathematical Systems),\nvol. 600. Berlin, Germany: Springer-V erlag, 2008, pp. 71\u201390.\n[33] R. Zurawski and M. Zhou, \u201cPetri nets and industrial applications: A\ntutorial,\u201d IEEE Trans. Ind. Electron. , vol. 41, no. 6, pp. 567\u2013583,\nDec. 1994.\n[34] O. S. Nock, Hystoric Railway Disasters . London, U.K.: Ian Allan, 1983.\n[35] J. Pachl, Railway Operation and Control. Mountlake Terrace, W A, USA:\nVTD Rail Publishing, 2002.\n[36] C. Pan, M. C. Zhou, Y . Qia"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_64",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 65",
+    "type": "text",
+    "text": "Nock, Hystoric Railway Disasters . London, U.K.: Ian Allan, 1983.\n[35] J. Pachl, Railway Operation and Control. Mountlake Terrace, W A, USA:\nVTD Rail Publishing, 2002.\n[36] C. Pan, M. C. Zhou, Y . Qiao, and N. Q. Wu, \u201cScheduling clus-\nter tools in semiconductor manufacturing: Recent advances and chal-\nlenges,\u201d IEEE Trans. Automat. Sci. Eng. , vol. 15, no. 2, pp. 586\u2013601,\nApr. 2018.\n[37] X. Ren and M. Zhou, \u201cTactical sche duling of rail operations: A Petri\nnet approach,\u201d in Proc. IEEE Int. Conf. Syst., Man Cybern. Intell. Syst.\n21st Century , V ancouver, BC, Canada, Oct. 1995, pp. 3087\u20133092.\n[38] I. Sahin, \u201cRailway traf\ufb01c control and train scheduling based oninter-\ntrain con\ufb02ict management,\u201d Transp. Res. B, Methodol. , vol. 33, no. 7,\npp. 511\u2013534, Sep. 1999.\n[39] X. Sun, H. Lu, and H. Dong, \u201cEnergy-ef\ufb01cient train control by multi-\ntrain dynamic cooperation,\u201d IEEE Trans. Intell. Transp. Syst. , vol. 18,\nno. 11, pp. 3114\u20133121, Nov. 2017.\n[40] H. Tang, Q. Wang, and X. Feng, \u201cRobust stochas"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_65",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 66",
+    "type": "text",
+    "text": " \u201cEnergy-ef\ufb01cient train control by multi-\ntrain dynamic cooperation,\u201d IEEE Trans. Intell. Transp. Syst. , vol. 18,\nno. 11, pp. 3114\u20133121, Nov. 2017.\n[40] H. Tang, Q. Wang, and X. Feng, \u201cRobust stochastic control for high-\nspeed trains with nonlinearity, parametric uncertainty, and multiple\ntime-varying delays,\u201d IEEE Trans. Intell. Transp. Syst. , vol. 19, no. 4,\npp. 1027\u20131037, Apr. 2018.\n[41] R. Tarjan, \u201cDepth-\ufb01rst search and linear graph algorithms,\u201d SIAM J.\nComput., vol. 1, no. 4, pp. 146\u2013160, 1972.\n[42] J. T\u00f6rnquist, \u201cComputer-based decision support for railway traf\ufb01c\nscheduling and dispatching: A review of models and algorithms,\u201d in\nProc. Workshop Algorithmic Methods Models Optim. Railways , 2005,\npp. 1\u201323.\n[43] J. T\u00f6rnquist and J. A. Persson, \u201cN-t racked railway traf\ufb01c re-scheduling\nduring disturbances,\u201d Transp. Res. B, Methodol. , vol. 41, no. 3,\npp. 342\u2013362, Mar. 2007.\n[44] F. Tricas, J. M. Colom, and J. Ezpeleta, \u201cA solution to the problem\nof deadlocks in concurrent systems usi"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_66",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 67",
+    "type": "text",
+    "text": "uring disturbances,\u201d Transp. Res. B, Methodol. , vol. 41, no. 3,\npp. 342\u2013362, Mar. 2007.\n[44] F. Tricas, J. M. Colom, and J. Ezpeleta, \u201cA solution to the problem\nof deadlocks in concurrent systems using Petri nets and integer linear\nprogramming,\u201d in Proc. 11th Eur . Simulation Symp., 1999, pp. 542\u2013546.\n[45] F. Tricas, F. Garcia-V alles, J. M. Colom, and J. Ezpeleta, \u201cA\nPetri net structure-based deadlock prevention solution for sequential\nresource allocation systems,\u201d in Proc. IEEE Int. Conf. Robot. Automat. ,\nBarcelona, Spain, Apr. 2005, pp. 272\u2013278.\n[46] J. Wang, H. Hu, C. Pan, Y . Zhou, and L. Li, \u201cScheduling dual-arm\ncluster tools with multiple wafer types and residency time constraints,\u201d\nIEEE/CAA J. Automatica Sinica , vol. 7, no. 3, pp. 776\u2013789, May 2020.\n[47] P . Wang, R. M. P . Goverde, and L. Ma, \u201cA multiple-phase train trajectory\noptimization method under real-time rail traf\ufb01c management,\u201d in Proc.\nIEEE 18th Int. Conf. Intell. Transp. Syst. , Las Palmas, Spain, Sep. 2015,\npp. "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_67",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 68",
+    "type": "text",
+    "text": "rde, and L. Ma, \u201cA multiple-phase train trajectory\noptimization method under real-time rail traf\ufb01c management,\u201d in Proc.\nIEEE 18th Int. Conf. Intell. Transp. Syst. , Las Palmas, Spain, Sep. 2015,\npp. 12144\u201312152.\n[48] P . Wang and R. M. P . Goverde, \u201cMultiple-phase train trajectory opti-\nmization with signalling and operational constraints,\u201d Transp. Res. C,\nEmerg. Technol., vol. 69, pp. 255\u2013275, Aug. 2016.\n[49] P . Wang, L. Ma, R. M. P . Goverde, and Q. Wang, \u201cRescheduling trains\nusing Petri nets and heuristic search,\u201d IEEE Trans. Intell. Transp. Syst. ,\nvol. 17, no. 3, pp. 726\u2013735, Mar. 2016.\n[50] N. Q. Wu and M. C. Zhou, \u201cModeling, analysis and control of dual-arm\ncluster tools with residency time constraint and activity time variation\nbased on Petri nets,\u201d IEEE Trans. Autom. Sci. Eng. , vol. 9, no. 2,\npp. 446\u2013454, Apr. 2012.\n[51] P . Wu, F. Chu, A. Che, and M. Zhou, \u201cBi-objective scheduling of \ufb01re\nengines for \ufb01ghting forest \ufb01res: New optimization approaches,\u201d IEEE\nTrans. Intell. Tra"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_68",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 69",
+    "type": "text",
+    "text": " vol. 9, no. 2,\npp. 446\u2013454, Apr. 2012.\n[51] P . Wu, F. Chu, A. Che, and M. Zhou, \u201cBi-objective scheduling of \ufb01re\nengines for \ufb01ghting forest \ufb01res: New optimization approaches,\u201d IEEE\nTrans. Intell. Transp. Syst. , vol. 19, no. 4, pp. 1140\u20131151, Apr. 2018.\n[52] F. Y ang, N. Q. Wu, Y . Qiao, and R. Su, \u201cPolynomial approach to optimal\none-wafer cyclic scheduling of treelike hybrid multi-cluster tools via\nPetri nets,\u201d IEEE/CAA J. Autom. Sinica , vol. 5, no. 1, pp. 270\u2013280,\nJan. 2018.\n[53] H. Y ue and K. Y . Xing, \u201cRobust supervisory control for avoiding dead-\nlocks in automated manufacturing systems with one speci\ufb01ed unreliable\nresource,\u201d Trans. Inst. Meas. Control , vol. 36, no. 4, pp. 435\u2013444,\n2014.\n[54] M. C. Zhou and K. V enkatesh, Modeling, Simulation, and Control\nof Flexible Manufacturing Systems: A Petri Net Approach . Singapore:\nWorld Scienti\ufb01c, 1998.\n[55] M. C. Zhou and M. P . Fanti, Deadlock Resolution in Computer-\nIntegrated System. New Y ork, NY , USA: Marcel Dekker, 2005.\n[56] "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_69",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 70",
+    "type": "text",
+    "text": " Systems: A Petri Net Approach . Singapore:\nWorld Scienti\ufb01c, 1998.\n[55] M. C. Zhou and M. P . Fanti, Deadlock Resolution in Computer-\nIntegrated System. New Y ork, NY , USA: Marcel Dekker, 2005.\n[56] J. Zhou, J. Wang, and J. Wang, \u201cA simulation engine for stochastic timed\nPetri nets and application to emergency healthcare systems,\u201d IEEE/CAA\nJ. Automatica Sinica , vol. 6, no. 4, pp. 969\u2013980, Jul. 2019.\n[57] J. C. Luo, Z. Q. Liu, and M. C. Zhou, \u201cA Petri net based deadlock avoid-\nance policy for \ufb02exible manufacturin g systems with assembly operations\nand multiple resource acquisition,\u201d IEEE Trans. Ind. Informat. , vol. 15,\nno. 6, pp. 3379\u20133387, Jun. 2019.\n[58] J. Luo et al., \u201cRobust deadlock control of automated manufacturing sys-\ntems with multiple unreliable resources,\u201d Inf. Sci., vol. 479, pp. 401\u2013415,\nApr. 2019.\n[59] J. Luo, M. Zhou, and J.-Q. Wang, \u201cAB&B: An anytime branch and\nbound algorithm for scheduling of deadlock-prone \ufb02exible manufactur-\ning systems,\u201d IEEE Trans. Autom. Sci. "
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_70",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 71",
+    "type": "text",
+    "text": ", pp. 401\u2013415,\nApr. 2019.\n[59] J. Luo, M. Zhou, and J.-Q. Wang, \u201cAB&B: An anytime branch and\nbound algorithm for scheduling of deadlock-prone \ufb02exible manufactur-\ning systems,\u201d IEEE Trans. Autom. Sci. Eng. , early access, Nov. 16, 2021,\ndoi: 10.1109/TASE.2020.3029737.\n[60] J. Luo, Z. Liu, M. Zhou, and K. Xing, \u201cDeadlock-free scheduling\nof \ufb02exible assembly systems based on Petri nets and local search,\u201d\nIEEE Trans. Syst., Man, Cybern. Syst. , vol. 50, no. 10, pp. 3658\u20133669,\nOct. 2020.\nJianchao Luo received the Ph.D. degree in con-\ntrol science and engineering from Xi\u2019an Jiaotong\nUniversity, Xi\u2019an, China, in 2016. He joined\nthe Northwestern Polytechnical University, Xi\u2019an,\nin 2017, where he is currently an Assistant Professor\nof software engineering. Hi s current research inter-\nests include deadlock-free scheduling and control of\nAMSs.\nMengchu Zhou (Fellow, IEEE) joined the New\nJersey Institute of Technology in 1990, where he\nis currently a Distinguished Professor. He has over\n900 publica"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_71",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 72",
+    "type": "text",
+    "text": "eadlock-free scheduling and control of\nAMSs.\nMengchu Zhou (Fellow, IEEE) joined the New\nJersey Institute of Technology in 1990, where he\nis currently a Distinguished Professor. He has over\n900 publications, incl uding 12 books, more than\n600 journal articles (more than 500 in IEEE trans-\nactions), 29 patents, and 29 book-chapters. His\ninterests include petri nets, intelligent automation,\nthe Internet of Things, and big data. He is a fellow\nof IFAC, AAAS, CAA, and NAI. He was a recipient\nof the Humboldt Research Award for U.S. Senior\nScientists from the Alexander von Humboldt Foun-\ndation, the Franklin V . Taylor MemorialAward, and the Norbert Wiener Award\nfrom the IEEE Systems, Man and Cybern etics Society. He is also the Founding\nEditor of IEEE Press Book Series on Systems Science and Engineering, and\nthe Editor-in-Chief of IEEE/CAA J\nOURNAL OF AUTOMA TICA SINICA .\nJun-Qiang Wang received the Ph.D. degree\nfrom the School of Mechanical Engineering,\nNorthwestern Polytechnical University"
+  },
+  {
+    "chunk_id": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf_chunk_72",
+    "source": "A_Place-Timed_Petri_Net-Based_Method_to_Avoid_Deadlock_and_Conflict_in_Railway_Networks.pdf",
+    "section": "Chunk 73",
+    "type": "text",
+    "text": "ineering, and\nthe Editor-in-Chief of IEEE/CAA J\nOURNAL OF AUTOMA TICA SINICA .\nJun-Qiang Wang received the Ph.D. degree\nfrom the School of Mechanical Engineering,\nNorthwestern Polytechnical University (NPU),\nXi\u2019an, China, in 2006. He is currently a Professor\nwith the Department of I ndustrial Engineering,\nSchool of Mechanical Engineering, NPU. He is also\nthe Director of the Performance Analysis Center of\nProduction and Operations Systems (PacPos). His\nresearch interests incl ude modeling, scheduling,\nanalysis, and control of production and operations\nsystems.\nAuthorized licensed use limited to: YANGZHOU UNIVERSITY. Downloaded on November 05,2025 at 07:13:04 UTC from IEEE Xplore.  Restrictions apply. \n\n"
+  }
+]
