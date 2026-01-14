@@ -6,7 +6,7 @@ from ingest_pdfs import extract_chunks_from_pdf
 from semantic_retrieval import retrieve_chunks, precompute_embeddings
 from llm_answer import generate_structured_report, GEMINI_AVAILABLE
 from pdf_export import create_pdf_report
-
+ 
 def main():
     # Set page config with professional styling
     st.set_page_config(
