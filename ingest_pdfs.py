@@ -7,7 +7,7 @@ def chunk_text(text: str, chunk_size: int, overlap: int) -> list[str]:
     """Splits text into overlapping chunks."""
     if not text:
         return []
-    
+
     chunks = []
     start = 0
     while start < len(text):
