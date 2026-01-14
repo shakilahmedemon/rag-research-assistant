@@ -32,7 +32,7 @@ An intelligent, professional-grade Research Paper Analysis & Question Answering 
 ### 2. Installation
 Clone the repository and install the dependencies:
 
-- git clone https://github.com/yourusername/advanced-rag-academic-assistant.git
+- git clone https://github.com/shakilahmedemon/rag-research-assistant
 - cd advanced-rag-academic-assistant
 - pip install -r requirements.txt
 
