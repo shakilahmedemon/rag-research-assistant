@@ -53,3 +53,10 @@ The system uses a config.py file for global settings. You can adjust:
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+
+## Author
+
+AHMED MD SHAKIL
+
+Studying Master's in Software Engineering at Yangzhou University, China
