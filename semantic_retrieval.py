@@ -27,7 +27,7 @@ def precompute_embeddings():
         # Save empty
         np.save(EMBED_FILE, np.array([]))
         return
-
+ 
     texts = [c["text"] for c in chunks]
     
     try:
