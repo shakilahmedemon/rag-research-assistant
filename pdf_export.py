@@ -1,6 +1,6 @@
 from fpdf import FPDF
 import os
-
+ 
 class PDFReport(FPDF):
     def header(self):
         self.set_font('Arial', 'B', 16)
