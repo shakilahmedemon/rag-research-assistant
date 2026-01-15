@@ -1,7 +1,7 @@
 import warnings
 # Temporarily suppress the deprecation warning for google.generativeai
 warnings.filterwarnings("ignore", message=".*google.generativeai.*deprecated.*")
- 
+
 # Try to import the new API first
 try:
     import google.genai as genai
