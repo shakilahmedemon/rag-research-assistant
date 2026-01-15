@@ -1,5 +1,5 @@
 import os
- 
+
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MEMORY_DIR = os.path.join(BASE_DIR, "memory")
@@ -15,7 +15,7 @@ os.makedirs(PAPERS_DIR, exist_ok=True)
 TOP_K = 5
 
 # LLM
-LLM_MODEL = "gemini-pro"  # Using Gemini Pro model
+LLM_MODEL = "models/gemini-flash-latest"  # Latest available free flash model
 LLM_TEMPERATURE = 0.2
 LLM_MAX_TOKENS = 1500
 
